@@ -26,14 +26,14 @@ pipeline {
                     mail to: 'injectsql001@gmail.com',
                     subject: 'Pipeline Success: Test stage',
                     body: 'The test stage of the Pipeline ran successfully.',
-                    attachmentsPattern: '**/*.log'
+                    attachLog: true
                 }
                 failure {
                     // Send failure notification email with logs attached
-                    mail to: 'morismutea@gmail.com',
+                    mail to: 'injectsql001@gmail.com',
                     subject: 'Pipeline Failure: Test stage',
                     body: 'The test stage of the Pipeline failed.',
-                    attachmentsPattern: '**/*.log'
+                    attachLog: true
                 }
             }
         }
@@ -56,14 +56,14 @@ pipeline {
                     mail to: 'injectsql001@gmail.com',
                     subject: 'Pipeline Success: Security scan stage',
                     body: 'The security scan stage of the Pipeline ran successfully.',
-                    attachmentsPattern: '**/*.log'
+                    attachLog: true
                 }
                 failure {
                     // Send failure notification email with logs attached
                     mail to: 'morismutea@gmail.com',
                     subject: 'Pipeline Failure: Security scan stage',
                     body: 'The security scan stage of the Pipeline failed.',
-                    attachmentsPattern: '**/*.log'
+                    attachLog: true
                 }
             }
         }
