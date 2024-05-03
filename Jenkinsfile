@@ -24,7 +24,7 @@ pipeline {
                 success {
                     // Send success notification email with logs attached
                     emailext(
-                        // to: 'injectsql001@gmail.com',
+                        to: 'morismutea@gmail.com',
                         subject: 'Pipeline Success: Test stage',
                         body: 'The test stage of the Pipeline ran successfully.',
                         attachLog: true
@@ -33,7 +33,7 @@ pipeline {
                 failure {
                     // Send failure notification email with logs attached
                     emailext(
-                        // to: 'injectsql001@gmail.com',
+                        to: 'morismutea@gmail.com',
                         subject: 'Pipeline Failure: Test stage',
                         body: 'The test stage of the Pipeline failed.',
                         attachLog: true
@@ -58,7 +58,7 @@ pipeline {
                 success {
                     // Send success notification email with logs attached
                     emailext(
-                        // to: 'injectsql001@gmail.com',
+                        to: 'morismutea@gmail.com',
                         subject: 'Pipeline Success: Security scan stage',
                         body: 'The security scan stage of the Pipeline ran successfully.',
                         attachLog: true
@@ -67,7 +67,7 @@ pipeline {
                 failure {
                     // Send failure notification email with logs attached
                     emailext(
-                        // to: 'morismutea@gmail.com',
+                        to: 'morismutea@gmail.com',
                         subject: 'Pipeline Failure: Security scan stage',
                         body: 'The security scan stage of the Pipeline failed.',
                         attachLog: true
