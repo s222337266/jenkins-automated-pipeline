@@ -23,17 +23,21 @@ pipeline {
             post {
                 success {
                     // Send success notification email with logs attached
-                    mail to: 'injectsql001@gmail.com',
-                    subject: 'Pipeline Success: Test stage',
-                    body: 'The test stage of the Pipeline ran successfully.',
-                    attachLog: true
+                    emailext(
+                        to: 'injectsql001@gmail.com',
+                        subject: 'Pipeline Success: Test stage',
+                        body: 'The test stage of the Pipeline ran successfully.',
+                        attachLog: true
+                    )
                 }
                 failure {
                     // Send failure notification email with logs attached
-                    mail to: 'injectsql001@gmail.com',
-                    subject: 'Pipeline Failure: Test stage',
-                    body: 'The test stage of the Pipeline failed.',
-                    attachLog: true
+                    emailext(
+                        to: 'injectsql001@gmail.com',
+                        subject: 'Pipeline Failure: Test stage',
+                        body: 'The test stage of the Pipeline failed.',
+                        attachLog: true
+                    )
                 }
             }
         }
@@ -53,17 +57,21 @@ pipeline {
             post {
                 success {
                     // Send success notification email with logs attached
-                    mail to: 'injectsql001@gmail.com',
-                    subject: 'Pipeline Success: Security scan stage',
-                    body: 'The security scan stage of the Pipeline ran successfully.',
-                    attachLog: true
+                    emailext(
+                        to: 'injectsql001@gmail.com',
+                        subject: 'Pipeline Success: Security scan stage',
+                        body: 'The security scan stage of the Pipeline ran successfully.',
+                        attachLog: true
+                    )
                 }
                 failure {
                     // Send failure notification email with logs attached
-                    mail to: 'morismutea@gmail.com',
-                    subject: 'Pipeline Failure: Security scan stage',
-                    body: 'The security scan stage of the Pipeline failed.',
-                    attachLog: true
+                    emailext(
+                        to: 'morismutea@gmail.com',
+                        subject: 'Pipeline Failure: Security scan stage',
+                        body: 'The security scan stage of the Pipeline failed.',
+                        attachLog: true
+                    )
                 }
             }
         }
