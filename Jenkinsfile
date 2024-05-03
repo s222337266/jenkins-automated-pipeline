@@ -24,7 +24,7 @@ pipeline {
                 success {
                     // Send success notification email with logs attached
                     mail
-                        from: 'injectsql001@gmail.com',
+                        // from: 'injectsql001@gmail.com',
                         to: 'morismutea@gmail.com',
                         subject: 'Pipeline Success: Test stage',
                         body: 'The test stage of the Pipeline ran successfully.',
