@@ -20,6 +20,22 @@ pipeline {
                 echo "Run integration tests using maven integration test..."
                 echo 'mvn integration-test'
             }
+            post {
+                success {
+                    // Send success notification email with logs attached
+                    mail to: 'injectsql001@gmail.com',
+                    subject: 'Pipeline Success: Test stage',
+                    body: 'The test stage of the Pipeline ran successfully.',
+                    attachmentsPattern: '**/*.log'
+                }
+                failure {
+                    // Send failure notification email with logs attached
+                    mail to: 'morismutea@gmail.com',
+                    subject: 'Pipeline Failure: Test stage',
+                    body: 'The test stage of the Pipeline failed.',
+                    attachmentsPattern: '**/*.log'
+                }
+            }
         }
         stage('Code Analysis') {
             steps {
@@ -33,6 +49,22 @@ pipeline {
                 echo "Perform security scan..."
                 echo 'Tool: OWASP ZAP'
                 echo "zap-cli --quick-scan --spider --self-contained http://localhost:8080/myapp"
+            }
+            post {
+                success {
+                    // Send success notification email with logs attached
+                    mail to: 'injectsql001@gmail.com',
+                    subject: 'Pipeline Success: Security scan stage',
+                    body: 'The security scan stage of the Pipeline ran successfully.',
+                    attachmentsPattern: '**/*.log'
+                }
+                failure {
+                    // Send failure notification email with logs attached
+                    mail to: 'morismutea@gmail.com',
+                    subject: 'Pipeline Failure: Security scan stage',
+                    body: 'The security scan stage of the Pipeline failed.',
+                    attachmentsPattern: '**/*.log'
+                }
             }
         }
         stage('Deploy to Staging') {
@@ -54,27 +86,6 @@ pipeline {
                 echo 'Tool: Secure Shell (ssh)'
                 bat 'ssh user@production-server "cd /path/to/app && ./deploy.sh"'
             }
-        }
-    }
-    
-    post {
-        success {
-            // Send success notification email with logs attached
-            emailext (
-                to: 'morismutea@gmail.com',
-                subject: 'Pipeline Success',
-                body: 'Pipeline ran successfully.',
-                attachmentsPattern: '**/*.log'
-            )
-        }
-        failure {
-            // Send failure notification email with logs attached
-            emailext (
-                to: 'morismutea@gmail.com',
-                subject: 'Pipeline Failure',
-                body: 'Pipeline failed.',
-                attachmentsPattern: '**/*.log'
-            )
         }
     }
 }
