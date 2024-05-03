@@ -15,16 +15,16 @@ pipeline {
         stage('Unit and Integration Tests') {
             steps {
                 echo "Run unit tests using maven..."
-                echo 'Tool: Maven'
                 echo 'mvn test'
                 echo "Run integration tests using maven integration test..."
-                echo 'mvn integration-test'
+                echo 'Tool: Maven'
+                // echo 'mvn integration-test'
             }
             post {
                 success {
                     // Send success notification email with logs attached
                     emailext(
-                        to: 'injectsql001@gmail.com',
+                        // to: 'injectsql001@gmail.com',
                         subject: 'Pipeline Success: Test stage',
                         body: 'The test stage of the Pipeline ran successfully.',
                         attachLog: true
@@ -33,7 +33,7 @@ pipeline {
                 failure {
                     // Send failure notification email with logs attached
                     emailext(
-                        to: 'injectsql001@gmail.com',
+                        // to: 'injectsql001@gmail.com',
                         subject: 'Pipeline Failure: Test stage',
                         body: 'The test stage of the Pipeline failed.',
                         attachLog: true
@@ -45,20 +45,20 @@ pipeline {
             steps {
                 echo "Perfoming code analyses using SonarQube.."
                 echo 'Tool: SonarQube'
-                echo "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"            
+                // echo "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"            
             }
         }
         stage('Security Scan') {
             steps {
                 echo "Perform security scan..."
                 echo 'Tool: OWASP ZAP'
-                echo "zap-cli --quick-scan --spider --self-contained http://localhost:8080/myapp"
+                // echo "zap-cli --quick-scan --spider --self-contained http://localhost:8080/myapp"
             }
             post {
                 success {
                     // Send success notification email with logs attached
                     emailext(
-                        to: 'injectsql001@gmail.com',
+                        // to: 'injectsql001@gmail.com',
                         subject: 'Pipeline Success: Security scan stage',
                         body: 'The security scan stage of the Pipeline ran successfully.',
                         attachLog: true
@@ -67,7 +67,7 @@ pipeline {
                 failure {
                     // Send failure notification email with logs attached
                     emailext(
-                        to: 'morismutea@gmail.com',
+                        // to: 'morismutea@gmail.com',
                         subject: 'Pipeline Failure: Security scan stage',
                         body: 'The security scan stage of the Pipeline failed.',
                         attachLog: true
@@ -79,7 +79,7 @@ pipeline {
             steps {
                 echo "Deploy the application to staging server in AWS EC2..."
                 echo 'Tool: Secure Shell (ssh)'
-                echo 'ssh user@staging-server "cd /path/to/app && ./deploy.sh"'
+                // echo 'ssh user@staging-server "cd /path/to/app && ./deploy.sh"'
             }
         }
         stage('Integration Tests on Staging') {
@@ -92,7 +92,7 @@ pipeline {
             steps {
                 echo "Deploy the application to production server in AWS EC2 instance..."
                 echo 'Tool: Secure Shell (ssh)'
-                bat 'ssh user@production-server "cd /path/to/app && ./deploy.sh"'
+                // echo 'ssh user@production-server "cd /path/to/app && ./deploy.sh"'
             }
         }
     }
