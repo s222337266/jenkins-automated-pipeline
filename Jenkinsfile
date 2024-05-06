@@ -10,6 +10,7 @@ pipeline {
                 echo "Build the code using Maven.."
                 echo 'Tool: Maven'
                 echo "mvn clean package"
+                echo 'Build completed'
             }
         }
         stage('Unit and Integration Tests') {
