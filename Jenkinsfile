@@ -18,7 +18,7 @@ pipeline {
                 echo 'mvn test'
                 echo "Run integration tests using maven integration test..."
                 echo 'Tool: Maven'
-                // echo 'mvn integration-test'
+                echo 'Testing completed'
             }
             post {
                 success {
